@@ -1,10 +1,7 @@
-# Function to calculate BMI
 def calculate_bmi(weight, height):
-    # Formula for BMI: weight (kg) / (height (m) * height (m))
     return weight / (height ** 2)
 
 
-# Function to interpret BMI value
 def interpret_bmi(bmi):
     if bmi < 18.5:
         return "Underweight"
@@ -16,20 +13,23 @@ def interpret_bmi(bmi):
         return "Obese"
 
 
-# Main program
-if __name__ == "__main__":
+while True:
     try:
         weight = float(input("Enter your weight in kilograms: "))
         height = float(input("Enter your height in meters: "))
 
-        # Calculate BMI
-        bmi = calculate_bmi(weight, height)
+        if weight <= 0 or height <= 0:
+            print("Weight and height must be positive values.")
+            continue
 
-        # Interpret BMI
+        bmi = calculate_bmi(weight, height)
         bmi_category = interpret_bmi(bmi)
 
-        # Display the result
         print(f"Your BMI is: {bmi:.2f}")
         print(f"You are in the '{bmi_category}' category.")
     except ValueError:
         print("Invalid input. Please enter numeric values for weight and height.")
+
+    another_calculation = input("Do you want to calculate another BMI (yes/no)? ").lower()
+    if another_calculation != "yes":
+        break
