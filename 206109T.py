@@ -11,6 +11,12 @@ def interpret_bmi(bmi):
     else:
         return "Obese"
 
+def calculate_ideal_weight_range(height):
+    
+    lower_bound = 18.5 * (height ** 2)
+    upper_bound = 24.9 * (height ** 2)
+    return lower_bound, upper_bound
+
 print("Welcome to the BMI Calculator!")
 print("-------------------------------")
 
@@ -21,12 +27,14 @@ height = float(input("Enter your height in meters: "))
 
 bmi = calculate_bmi(weight, height)
 bmi_category = interpret_bmi(bmi)
+ideal_weight_range = calculate_ideal_weight_range(height)
 
-print("\nCalculating your BMI...")
+print("\nCalculating your BMI and Ideal Weight Range...")
 print("-------------------------------")
 
 print(f"{name}, aged {age}, your BMI is: {bmi:.2f}")
 print(f"You are in the '{bmi_category}' category.")
+print(f"The ideal weight range for your height is between {ideal_weight_range[0]:.2f} kg and {ideal_weight_range[1]:.2f} kg.")
 print("-------------------------------")
 
 if bmi < 18.5:
@@ -37,4 +45,3 @@ else:
     print("You are within the healthy BMI range. Keep up the good work!")
 
 print("Thank you for using the BMI Calculator. Stay healthy!")
-
