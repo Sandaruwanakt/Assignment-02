@@ -1,7 +1,6 @@
 def calculate_bmi(weight, height):
     return weight / (height ** 2)
 
-
 def interpret_bmi(bmi):
     if bmi < 18.5:
         return "Underweight"
@@ -12,26 +11,30 @@ def interpret_bmi(bmi):
     else:
         return "Obese"
 
+print("Welcome to the BMI Calculator!")
+print("-------------------------------")
 
-while True:
-    try:
-        name = input("Enter your name: ")
-        age = int(input("Enter your age: "))
-        weight = float(input("Enter your weight in kilograms: "))
-        height = float(input("Enter your height in meters: "))
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+weight = float(input("Enter your weight in kilograms: "))
+height = float(input("Enter your height in meters: "))
 
-        if weight <= 0 or height <= 0:
-            print("Weight and height must be positive values.")
-            continue
+bmi = calculate_bmi(weight, height)
+bmi_category = interpret_bmi(bmi)
 
-        bmi = calculate_bmi(weight, height)
-        bmi_category = interpret_bmi(bmi)
+print("\nCalculating your BMI...")
+print("-------------------------------")
 
-        print(f"{name}, aged {age}, your BMI is: {bmi:.2f}")
-        print(f"You are in the '{bmi_category}' category.")
-    except ValueError:
-        print("Invalid input. Please enter valid values for name, age, weight, and height.")
+print(f"{name}, aged {age}, your BMI is: {bmi:.2f}")
+print(f"You are in the '{bmi_category}' category.")
+print("-------------------------------")
 
-    another_calculation = input("Do you want to calculate another BMI (yes/no)? ").lower()
-    if another_calculation != "yes":
-        break
+if bmi < 18.5:
+    print("You are underweight. Consider consulting a healthcare professional.")
+elif bmi >= 25:
+    print("You are overweight. Consider maintaining a balanced diet and staying physically active.")
+else:
+    print("You are within the healthy BMI range. Keep up the good work!")
+
+print("Thank you for using the BMI Calculator. Stay healthy!")
+
