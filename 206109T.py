@@ -15,6 +15,8 @@ def interpret_bmi(bmi):
 
 while True:
     try:
+        name = input("Enter your name: ")
+        age = int(input("Enter your age: "))
         weight = float(input("Enter your weight in kilograms: "))
         height = float(input("Enter your height in meters: "))
 
@@ -25,10 +27,10 @@ while True:
         bmi = calculate_bmi(weight, height)
         bmi_category = interpret_bmi(bmi)
 
-        print(f"Your BMI is: {bmi:.2f}")
+        print(f"{name}, aged {age}, your BMI is: {bmi:.2f}")
         print(f"You are in the '{bmi_category}' category.")
     except ValueError:
-        print("Invalid input. Please enter numeric values for weight and height.")
+        print("Invalid input. Please enter valid values for name, age, weight, and height.")
 
     another_calculation = input("Do you want to calculate another BMI (yes/no)? ").lower()
     if another_calculation != "yes":
